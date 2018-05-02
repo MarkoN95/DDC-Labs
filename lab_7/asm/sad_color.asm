@@ -47,15 +47,15 @@ abs_diff_color:
 	sw $ra, 0($sp)
 	add $a1, $a3, $0	       # load R2 into $a1 (R1 already in $a0)
 	jal diff_abs
-	add $t0, $v0, $0         # $t0 = diff(R1, R2)
+	add $t0, $v0, $0         # $t0 = diff_abs(R1, R2)
 	lw $a0, 4($sp)		       # load G1 into $a0
 	lw $a1, 12($sp)		       # load G2 into $a1
 	jal diff_abs
-	add $t0, $v0, $t0        # $t0 = diff(R1, R2) + diff(G1, G2)
+	add $t0, $v0, $t0        # $t0 = diff_abs(R1, R2) + diff_abs(G1, G2)
 	add $a0, $a2, $0	       # load B1 into $a0
 	lw $a1, 8($sp)		       # load B2 into $a1
 	jal diff_abs
-	add $v0, $t0, $v0        # $v0 = diff(R1, R2) + diff(G1, G2) + diff(B1, B2)
+	add $v0, $t0, $v0        # $v0 = diff_abs(R1, R2) + diff_abs(G1, G2) + diff_abs(B1, B2)
 	lw $ra, 0($sp)           # restore old $ra
 	add $sp, $sp 8           # free stack space
 	jr $ra
